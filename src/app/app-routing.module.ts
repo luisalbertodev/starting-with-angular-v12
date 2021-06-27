@@ -21,13 +21,16 @@ const routes: Routes = [
       },
       {
         path: 'product',
-        canActivate: [AdminGuard],
         loadChildren: () =>
           import('@app/product/product.module').then((m) => m.ProductModule),
       },
       {
+        path: 'order',
+        loadChildren: () =>
+          import('@app/order/order.module').then((m) => m.OrderModule),
+      },
+      {
         path: 'contact',
-        canActivate: [AdminGuard],
         loadChildren: () =>
           import('@app/contact/contact.module').then((m) => m.ContactModule),
       },
@@ -39,7 +42,13 @@ const routes: Routes = [
       import('@app/demo/demo.module').then((m) => m.DemoModule),
   },
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('@app/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: () =>
       import('@app/admin/admin.module').then((m) => m.AdminModule),
   },
